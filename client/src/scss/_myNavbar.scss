@@ -1,0 +1,88 @@
+@use "./mixin" as *;
+@use "./custom" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
+.mynavbar + * {
+  margin-top: 65px;
+}
+
+.profile-pic {
+  max-height: 2.5rem;
+}
+
+.navbar a {
+  color: whitesmoke;
+}
+
+.navbar-brand {
+  margin-right: 0 !important    ;
+}
+
+.navbar h4 {
+  font-family: "Michroma", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .nav-pc {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-mobile {
+    display: none;
+  }
+}
+
+.rounded-pill {
+  background: rgba($color: #000000, $alpha: 0.9);
+  padding: 0.3rem 1rem;
+  color: whitesmoke;
+  border: none;
+}
+
+.search-icon {
+  font-size: 1.25rem;
+  transition: color  0.5s, transform 0.5s;
+  border:none;
+
+  &:hover{
+    color:white !important;
+    position:relative;
+    transform: scale(1.4);
+  }
+}
+
+.search-form{
+  position: absolute;
+  top:100%;
+  right:0;
+  margin:0.5rem 1rem;
+ max-width:100%;
+ width:500px;
+ padding:1rem;
+ input{
+ border: 3px black solid;
+ border-radius: 1rem;
+    
+ }
+
+}
+
+.search-results{
+  width:100%;
+  margin: 1rem auto;
+  padding: 0;
+  li{
+    margin: 1rem auto;
+    padding:0.8rem;
+    img{
+      height:2rem;
+      width: 2rem;
+      margin-right: 1rem;
+      margin-left:1rem;
+    }
+  }
+  transition: height 0.8s;
+}

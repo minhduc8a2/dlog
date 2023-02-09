@@ -1,0 +1,32 @@
+$primary: #6fd49d;
+
+$blue: #0d6efd;
+$secondary: $blue;
+$red: #f32424;
+
+$border-radius: 0.5rem;
+.border-animation {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  animation: pulse-border 1s linear infinite;
+
+  width: 100%;
+  height: 100%;
+  border: 0.55rem solid $red;
+  border-radius: 1rem;
+}
+@keyframes pulse-border {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@import "~bootstrap/scss/bootstrap";
+

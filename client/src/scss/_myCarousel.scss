@@ -1,0 +1,59 @@
+@use "./mixin" as *;
+@use "./custom" as *;
+
+.carousel {
+  margin-top: 0;
+  width: 100%;
+  height: 512px;
+  &-inner {
+    height: 100%;
+  }
+
+  &-item {
+    height: 100%;
+  }
+  position: relative;
+  img {
+    @include desktop-view {
+      width: 100%;
+    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.carousel-caption p {
+  font-size: 1.25rem;
+
+  @include mobile-view {
+    font-size: 1rem;
+  }
+}
+
+.carousel-caption .doc-them {
+  background-color: rgba($color: $red, $alpha: 1);
+  position: relative;
+  @include mobile-view {
+    font-size: 1rem;
+  }
+}
+
+.carousel-caption h1 {
+  @include mobile-view {
+    font-size: 1.5rem;
+  }
+  text-transform: capitalize;
+}
+
+.carousel-control {
+ 
+    &-prev-icon {
+      width: 0px !important;
+    }
+    &-next-icon {
+      width: 0px !important;
+    }
+ 
+}

@@ -1,0 +1,82 @@
+@use "./mixin" as *;
+@use "./custom" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap");
+
+.post-page {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 2rem 12rem 2rem 12rem;
+  .filter {
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .container > img {
+    max-width: 100%;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    margin: 3rem auto auto auto;
+  }
+
+  h1,
+  p,
+  .fontawesome {
+    position: relative;
+  }
+
+  h1 {
+    margin-top: 3rem;
+
+    text-align: center;
+  }
+  p {
+    margin-top: 3rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    text-align: justify;
+    font-family: "Roboto Slab", serif;
+    line-height: 1.5rem;
+  }
+
+  @include mobile-view {
+    padding: 1rem;
+    .container > img,
+    p {
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+  }
+
+  @include tablet-view {
+    padding: 4rem;
+
+    p {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    .container > img {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .same-posts {
+    margin-top: 5rem;
+  }
+}
+
+.fontawesome {
+  font-size: 2rem;
+  color: $red;
+ 
+}

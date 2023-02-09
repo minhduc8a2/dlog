@@ -1,0 +1,43 @@
+@use "./scss/custom";
+
+@use "./scss/myNavbar";
+
+@use "./scss/myCarousel";
+@use "./scss/myCard";
+@use "./scss/postPage";
+@use "./scss/loginForm";
+@use "./scss/admin";
+@use "./scss/minhducinfo";
+@use "./scss/footer";
+@use "./scss/posts";
+
+* {
+  list-style: none;
+
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.App {
+  text-align: center;
+}
+
+.slide-enter {
+  opacity: 0;
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transition: opacity 0.8s ease-in;
+}
+
+.slide-exit {
+  opacity: 1;
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}

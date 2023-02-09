@@ -1,0 +1,26 @@
+
+@use "./mixin" as *;
+
+
+.create-post-btn{
+    width: 100%;
+    height: 100px;
+}
+
+
+.admin-post-list {
+  max-width: 500px;
+  li {
+    &:hover .edit {
+      display: flex;
+    }
+    position: relative;
+    .edit {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+     
+      
+    }
+  }
+}

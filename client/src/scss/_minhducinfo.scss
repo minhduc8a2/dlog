@@ -1,0 +1,19 @@
+@use "./custom" as *;
+
+.minhduc-info {
+  margin-top: 5rem;
+  img {
+    max-width: 60%;
+  }
+
+   .minhduc-info-title {
+    letter-spacing: 0.5rem;
+    font-size:2.5rem;
+    font-weight: 600;
+    color:$red
+    
+  }
+    
+    
+}
+
