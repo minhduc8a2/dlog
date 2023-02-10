@@ -3,8 +3,10 @@ import MyModal from "./myModal";
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
+import apiURI from "./api"
+
 export default function EditPost({ id }) {
-  const apiUrl = `http://localhost:5000/api/post/${id}`;
+  const apiUrl = `${apiURI.post}/${id}`;
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");

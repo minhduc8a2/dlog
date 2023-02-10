@@ -6,7 +6,7 @@ export default function LoginForm({ loginFunction }) {
   const email = useRef(null);
   const password = useRef(null);
   return (
-    <Form method="post">
+    <Form method="post" className="login">
       <h1 className="mb-5">Authentication</h1>
       <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
         <Form.Control

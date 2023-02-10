@@ -6,9 +6,10 @@ import MyNavbar from "./navbar";
 import Admin from "./admin";
 import Footer from "./footer";
 import { useState, useRef } from "react";
+import apiURI from "./api"
 
 function Main() {
-  const url = "http://localhost:5000/api/post";
+  const url = apiURI.post;
   const { data, loading, error } = useFetch(url);
   const postIdRef = useRef();
 

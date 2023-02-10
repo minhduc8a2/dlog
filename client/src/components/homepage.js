@@ -5,8 +5,10 @@ import useFetch from "./useFetch";
 import { motion } from "framer-motion"
 
 import { useEffect } from "react";
+import apiURI from "./api"
+
 export default function Homepage(props) {
-  const url = "http://localhost:5000/api/post";
+  const url = apiURI.post;
   const { data, loading, error } = useFetch(url);
 
   return (
@@ -15,7 +17,7 @@ export default function Homepage(props) {
       initial={{ opacity: 0, x: "-100%"}}
       animate={{ opacity: 1,x:0}}
       transition={{ duration: 0.5 }} className="homepage">
-        <MyCarousel url="http://localhost:5000/api/post/latest" />
+        <MyCarousel url={apiURI.post +"/latest"} />
 
         <MinhDucInfo />
         <Post

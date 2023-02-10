@@ -2,8 +2,9 @@ import Form from "react-bootstrap/Form";
 import MyModal from "./myModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import apiURI from "./api"
 export default function CreatePost() {
-  const apiUrl = `http://localhost:5000/api/post/`;
+  const apiUrl = apiURI.post;
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");

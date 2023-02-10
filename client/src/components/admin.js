@@ -8,8 +8,9 @@ import { useState } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyCard from "./card";
-const apiUrl = "http://localhost:5000/api/post";
-const apiUserUrl = "http://localhost:5000/api/user/login";
+import apiURI from "./api";
+const apiUrl = apiURI.post;
+const apiUserUrl = apiURI.login;
 function AdminPage({ verified, goToEditPost }) {
   const [update, setUpdate] = useState(false);
 
