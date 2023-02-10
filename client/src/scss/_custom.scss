@@ -28,5 +28,22 @@ $border-radius: 0.5rem;
   }
 }
 
+.scale-animation{
+    animation: scale-up-down 0.5s linear;
+}
+@keyframes scale-up-down {
+    0% {
+      opacity: 0;
+      
+    }
+    50% {
+      
+      opacity: 0.5;
+    }
+    100% {
+        opacity:1;
+        
+      }
+  }
 @import "~bootstrap/scss/bootstrap";
 

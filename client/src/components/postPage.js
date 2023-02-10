@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useEffect } from "react";
 import MyCard from "./card";
+import { motion } from "framer-motion"
 export default function PostPage(props) {
   const postPage = useRef();
   const colors = ["#a344ec", "#f3830d", "#4cba31"];
@@ -10,10 +11,13 @@ export default function PostPage(props) {
     return colors[Math.floor(Math.random() * 3)];
   }
   useEffect(() => {
-    if (postPage) postPage.current.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo(0,0);
   });
   return (
-    <div className="post-page" ref={postPage}>
+    <motion.div
+    initial={{ opacity: 0, x: "-100%"}}
+    animate={{ opacity: 1,x:0}}
+    transition={{ duration: 0.5 }} className="post-page" ref={postPage}>
       <div className="container">
         <Link to="/" className="fontawesome ms-1 mb-3 d-block text-start">
           <FontAwesomeIcon icon={faArrowLeft} />
@@ -42,6 +46,6 @@ export default function PostPage(props) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

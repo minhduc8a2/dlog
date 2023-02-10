@@ -7,7 +7,6 @@ import Admin from "./admin";
 import Footer from "./footer";
 import { useState, useRef } from "react";
 
-
 function Main() {
   const url = "http://localhost:5000/api/post";
   const { data, loading, error } = useFetch(url);

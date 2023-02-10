@@ -9,10 +9,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { debounce } from "./helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons";
 
 export default function MyNavbar(props) {
   let tags = [];
+
   if (!props.loading) tags = props.data.map((item) => item.tag);
   tags = [...new Set(tags)];
   const [expanded, setExpanded] = useState(false);
@@ -52,7 +53,10 @@ export default function MyNavbar(props) {
     <div className="mynavbar">
       <div
         className="  fixed-top nav-pc shadow-sm "
-        style={{ top: showNav ? "0" : "-66px", transition: "top 0.6s" }}
+        style={{
+          top: showNav || showSearch ? "0" : "-66px",
+          transition: "top 0.6s",
+        }}
       >
         <Navbar className="text-light navbar-dark bg-dark " expand="lg">
           <Container>
@@ -70,7 +74,7 @@ export default function MyNavbar(props) {
               </Link>
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ms-auto">
+              <Nav className="ms-auto" navbarScroll>
                 <Nav.Link>
                   <Link to="/">
                     <button
@@ -98,19 +102,32 @@ export default function MyNavbar(props) {
                 className="search-icon ms-4 text-danger bg-black rounded-circle "
                 onClick={() => {
                   setShowSearch(!showSearch);
+                  setSearchResults([]);
                 }}
               >
                 <FontAwesomeIcon icon={faSearch} />
               </button>
-              {showSearch && showNav && (
+              {showSearch && (
                 <Form className="d-flex search-form bg-dark d-flex flex-column rounded-more">
-                  <Form.Control
-                    type="search"
-                    placeholder="Tìm kiếm bài viết"
-                    className="me-2"
-                    aria-label="Search"
-                    onChange={search}
-                  />
+                  <div className="d-flex">
+                    <Form.Control
+                      type="search"
+                      placeholder="Tìm kiếm bài viết"
+                      className="me-2"
+                      aria-label="Search"
+                      onChange={search}
+                    />
+                    <button
+                      className="search-icon ms-4 text-danger bg-dark "
+                      onClick={() => {
+                        setShowSearch(!showSearch);
+                        setSearchResults([]);
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faClose} />
+                    </button>
+                  </div>
+
                   {searchResults.length !== 0 && (
                     <ul className="search-results">
                       <h5 className="text-start">Bài viết</h5>
@@ -122,11 +139,9 @@ export default function MyNavbar(props) {
                             setShowSearch(false);
                             setSearchResults([]);
                           }}
+                          key={item._id}
                         >
-                          <li
-                            key={item._id}
-                            className="rounded-more bg-black w-100 d-flex flex-row justify-content-start align-items-center"
-                          >
+                          <li className="rounded-more bg-black w-100 d-flex flex-row justify-content-start align-items-center">
                             {item.image ? (
                               <img
                                 src={item.image}
@@ -173,7 +188,7 @@ export default function MyNavbar(props) {
               />
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+              <Nav className="me-auto" navbarScroll>
                 <Nav.Link>
                   <Link to="/">
                     <button
@@ -203,14 +218,46 @@ export default function MyNavbar(props) {
                   </Nav.Link>
                 ))}
               </Nav>
-              <Form className="d-flex search-form ">
+
+              <Form className="d-flex search-form-mobile bg-dark d-flex flex-column rounded-more">
                 <Form.Control
                   type="search"
                   placeholder="Tìm kiếm bài viết"
-                  className="me-2 shadow"
+                  className="me-2 rounded-more"
                   aria-label="Search"
+                  onChange={search}
                 />
-                <Button variant="outline-success">Search</Button>
+                {searchResults.length !== 0 && (
+                  <ul className="search-results">
+                    <h5 className="text-start">Bài viết</h5>
+
+                    {searchResults.map((item) => (
+                      <Link
+                        to={item._id !== "1" && `/post/${item._id}`}
+                        onClick={() => {
+                          setShowSearch(false);
+                          setSearchResults([]);
+
+                          setExpanded(false);
+                        }}
+                        key={item._id}
+                      >
+                        <li className="rounded-more bg-black w-100 d-flex flex-row justify-content-start align-items-center">
+                          {item.image ? (
+                            <img
+                              src={item.image}
+                              alt=""
+                              className=" rounded-circle"
+                            />
+                          ) : (
+                            ""
+                          )}
+                          {item.title}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
               </Form>
             </Navbar.Collapse>
           </Container>

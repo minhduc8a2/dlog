@@ -1,11 +1,32 @@
+
+import { motion } from "framer-motion"
+
 export default function MyCard(props) {
+  
   let date = props.date.split("-");
   const year = date[0];
   const month = date[1];
   const day = date[2].slice(0, 2);
   date = day + "/" + month + "/" + year;
+  const cardVariants= {
+    offscreen: {
+      y: 100,
+     
+    },
+    onscreen: {
+      y: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.7,
+        duration: 0.8
+      }
+    }
+  };
   return (
-    <div className="mycard   mt-2 pt-2  px-3 px-lg-0 " >
+    <motion.div
+    initial="offscreen"
+    whileInView="onscreen"
+    viewport={{ once: true, amount: 0.8 }} variants={cardVariants} className="mycard   mt-2 pt-2  px-3 px-lg-0 ">
       <div className="mycard-img rounded-more">
         <img src={props.image} alt=""  />
         <button className="btn bg-white rounded-more d-none">
@@ -26,6 +47,6 @@ export default function MyCard(props) {
 
         <h4 className="mycard-title">{props.title}</h4>
       </div>
-    </div>
+    </motion.div>
   );
 }
