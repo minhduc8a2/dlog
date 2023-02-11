@@ -10,23 +10,32 @@ export default function MyCard(props) {
   date = day + "/" + month + "/" + year;
   const cardVariants= {
     offscreen: {
-      y: 100,
+     opacity: 0, scale: 0.5 
      
     },
     onscreen: {
-      y: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.7,
-        duration: 0.8
-      }
+      opacity: 1, scale: 1 
+      
     }
   };
+ 
   return (
     <motion.div
     initial="offscreen"
+    transition={{
+      default: {
+        duration: 0.5,
+        ease: [0, 0.71, 0.2, 1.01]
+      },
+      // scale: {
+      //   type: "spring",
+      //   damping: 5,
+      //   stiffness: 100,
+      //   restDelta: 0.001
+      // }
+    }}
     whileInView="onscreen"
-    viewport={{ once: true, amount: 0.8 }} variants={cardVariants} className="mycard   mt-2 pt-2  px-3 px-lg-0 ">
+    viewport={{ once: false, amount: 0.3 }} variants={cardVariants} className="mycard   mt-2 pt-2  px-3 px-lg-0 ">
       <div className="mycard-img rounded-more">
         <img src={props.image} alt=""  />
         <button className="btn bg-white rounded-more d-none">

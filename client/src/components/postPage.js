@@ -13,9 +13,19 @@ export default function PostPage(props) {
   useEffect(() => {
     window.scrollTo(0,0);
   });
+  const titleVariants= {
+    offscreen: {
+     opacity: 0, x: "100px" 
+     
+    },
+    onscreen: {
+      opacity: 1, x:0 
+      
+    }
+  };
   return (
     <motion.div
-    initial={{ opacity: 0, x: "-100%"}}
+    initial={{ opacity: 0, x: "-50%"}}
     animate={{ opacity: 1,x:0}}
     transition={{ duration: 0.5 }} className="post-page" ref={postPage}>
       <div className="container">
@@ -27,7 +37,22 @@ export default function PostPage(props) {
         <p>{props.content}</p>
         <div className="same-posts ">
           {props.samePosts.length > 1 && (
-            <h2 className="text-start mb-5">Các bài viết cùng chủ đề</h2>
+            <motion.div
+      initial="offscreen"
+      transition={{
+        default: {
+          duration: 1,
+          ease: [0, 0.71, 0.2, 1.01]
+        },
+        // scale: {
+        //   type: "spring",
+        //   damping: 5,
+        //   stiffness: 100,
+        //   restDelta: 0.001
+        // }
+      }}
+      whileInView="onscreen"
+      viewport={{ once: false, amount: 0.8 }} variants={titleVariants}><h2 className="text-start mb-5">Các bài viết cùng chủ đề</h2></motion.div>
           )}
           <div className="row">
             {props.samePosts.map((item) => (
