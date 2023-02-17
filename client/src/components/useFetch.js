@@ -8,7 +8,6 @@ export default function useFetch(url, options={}, dependencies=[]) {
     try {
       let res = await fetch(url, options);
       let newData = await res.json();
-      console.log(newData);
       setData(newData.data);
       setLoading(false);
     } catch (err) {

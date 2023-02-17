@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion"
-
+import Animation from "./animation";
 export default function MyCard(props) {
   
   let date = props.date.split("-");
@@ -8,34 +8,9 @@ export default function MyCard(props) {
   const month = date[1];
   const day = date[2].slice(0, 2);
   date = day + "/" + month + "/" + year;
-  const cardVariants= {
-    offscreen: {
-     opacity: 0, scale: 0.5 
-     
-    },
-    onscreen: {
-      opacity: 1, scale: 1 
-      
-    }
-  };
  
   return (
-    <motion.div
-    initial="offscreen"
-    transition={{
-      default: {
-        duration: 0.5,
-        ease: [0, 0.71, 0.2, 1.01]
-      },
-      // scale: {
-      //   type: "spring",
-      //   damping: 5,
-      //   stiffness: 100,
-      //   restDelta: 0.001
-      // }
-    }}
-    whileInView="onscreen"
-    viewport={{ once: false, amount: 0.3 }} variants={cardVariants} className="mycard   mt-2 pt-2  px-3 px-lg-0 ">
+    <Animation children={<div className="mycard   mt-2 pt-2  px-3 px-lg-0 ">
       <div className="mycard-img rounded-more">
         <img src={props.image} alt=""  />
         <button className="btn bg-white rounded-more d-none">
@@ -56,6 +31,6 @@ export default function MyCard(props) {
 
         <h4 className="mycard-title">{props.title}</h4>
       </div>
-    </motion.div>
+    </div>} animationName="appearBottomToTop"/>
   );
 }

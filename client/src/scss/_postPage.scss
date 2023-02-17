@@ -25,11 +25,11 @@
     max-width: 100%;
     padding-left: 6rem;
     padding-right: 6rem;
-    margin: 3rem auto auto auto;
+    margin: 3rem auto 3rem auto;
   }
 
   h1,
-  p,
+  &>p,
   .fontawesome {
     position: relative;
   }
@@ -39,28 +39,31 @@
 
     text-align: center;
   }
-  p {
-    margin-top: 3rem;
+
+  &>p {
+    
     padding-left: 6rem;
     padding-right: 6rem;
     text-align: justify;
-    font-family: "Roboto Slab", serif;
-    line-height: 1.5rem;
+    text-indent: 2rem;
+    line-height: 1.6rem;
+    font-size: 1rem;
   }
 
   @include mobile-view {
     padding: 1rem;
     .container > img,
-    p {
+    &>p {
       padding-left: 0rem;
       padding-right: 0rem;
+      font-size: 1.2rem;
     }
   }
 
   @include tablet-view {
     padding: 4rem;
 
-    p {
+    &>p {
       padding-left: 4rem;
       padding-right: 4rem;
     }
@@ -78,5 +81,17 @@
 .fontawesome {
   font-size: 2rem;
   color: $red;
- 
+}
+
+.comment {
+  .comment-btn {
+    margin-top:1rem;    
+    
+  }
+  .comment-icon{
+    max-width: 2.5rem;
+    img{
+      max-width: 100%;
+    }
+  }
 }

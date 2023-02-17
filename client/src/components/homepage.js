@@ -1,32 +1,31 @@
 import Post from "./post";
 import MyCarousel from "./carousel";
 import MinhDucInfo from "./minhducinfo";
-import useFetch from "./useFetch";
-import { motion } from "framer-motion"
+
+import Animation from "./animation";
+import Spinner from 'react-bootstrap/Spinner';
 
 import { useEffect } from "react";
 import apiURI from "./api"
 
 export default function Homepage(props) {
-  const url = apiURI.post;
-  const { data, loading, error } = useFetch(url);
-
+  
+  
   return (
    
-      <motion.div
-      initial={{ opacity: 0}}
-      animate={{ opacity: 1}}
-      transition={{ duration: 0.5 }} className="homepage">
-        <MyCarousel url={apiURI.post +"/latest"} />
+    <Animation children={<div className="homepage">
+        {props.loading?  <div><Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" /></div>:<MyCarousel data={props.data.slice(props.data.length>=3?props.data.length-3:props.data.length>=2?props.data.length-2:props.data.length-1,props.data.length)} loading={props.loading} />}
 
         <MinhDucInfo />
         <Post
-          loading={loading}
-          data={data}
+          loading={props.loading}
+          data={props.data}
           tag={props.tag}
           postIdRef={props.postIdRef}
         />
-      </motion.div>
+      </div>} animationName="appearFromTransparent"/>
     
   );
 }

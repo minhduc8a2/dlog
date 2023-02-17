@@ -7,9 +7,8 @@
   margin-top: 65px;
 }
 
-
-
-.profile-pic {
+.profile-pic,
+.user-avatar-img {
   max-height: 2.5rem;
 }
 
@@ -46,59 +45,74 @@
 
 .search-icon {
   font-size: 1.25rem;
-  transition: color  0.5s, transform 0.5s;
-  border:none;
+  transition: color 0.5s, transform 0.5s;
+  border: none;
 
-  &:hover{
-    color:white !important;
-    position:relative;
+  &:hover {
+    color: white !important;
+    position: relative;
     transform: scale(1.4);
   }
 }
 
-.search-form{
+.search-form {
   position: absolute;
-  top:100%;
-  right:0;
-  margin:0.5rem 1rem;
- max-width:100%;
- width:500px;
- padding:1rem;
- input{
- border: 3px black solid;
- border-radius: 1rem;
-    
- }
+  top: 100%;
+  right: 0;
+  margin: 0.5rem 1rem;
+  max-width: 100%;
+  width: 500px;
+  padding: 1rem;
+  input {
+    border: 3px black solid;
+    border-radius: 1rem;
+  }
 
- &-mobile{
-  margin: 0 auto;
-  
- }
-
+  &-mobile {
+    margin: 0 auto;
+  }
 }
 
-.search-results{
-  max-height:500px;
-  width:100%;
+.search-results {
+  max-height: 500px;
+  width: 100%;
   margin: 1rem auto;
   padding: 0;
-  li{
+  li {
     margin: 1rem auto;
-    padding:0.8rem;
-    img{
-      height:2rem;
+    padding: 0.8rem;
+    img {
+      height: 2rem;
       width: 2rem;
       margin-right: 1rem;
-      margin-left:1rem;
+      margin-left: 1rem;
     }
   }
   transition: height 0.8s;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 1px;
-    background-color:rgba($color: #000000, $alpha: 0);
-} 
-
-  
+    background-color: rgba($color: #000000, $alpha: 0);
+  }
 }
 
+.user-avatar {
+  
+  transition: color 0.5s, transform 0.5s;
+
+  &:hover {
+    transform: scale(1.5);
+    color: white !important;
+  }
+}
+.user {
+  position: relative;
+}
+.user-options {
+  position: absolute;
+  top: calc(100% + 2rem);
+  right: -75px;
+  margin: 0.5rem 1rem;
+
+  width: 150px;
+}

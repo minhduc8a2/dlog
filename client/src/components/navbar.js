@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { debounce } from "./helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faClose, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function MyNavbar(props) {
   let tags = [];
@@ -19,6 +19,7 @@ export default function MyNavbar(props) {
   const [expanded, setExpanded] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
+  const [showUserOptions, setShowUserOptions] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -34,6 +35,7 @@ export default function MyNavbar(props) {
 
     return () => window.removeEventListener("scroll", controlNavbar);
   }, [lastScrollY, showNav]);
+
   function search(e) {
     let value = e.target.value || "";
     let result = [];
@@ -159,6 +161,39 @@ export default function MyNavbar(props) {
                   )}
                 </Form>
               )}
+              {props.logined ? (
+                <div className="user">
+                  <button
+                    className="user-avatar ms-4 text-danger bg-black rounded-circle border-0 p-0"
+                    onClick={() => {
+                      setShowUserOptions(!showUserOptions);
+                    }}
+                  >
+                    {props.user && (
+                      <img src={props.user.avatar} alt="" className="rounded-circle user-avatar-img"/>
+                    ) }
+                  </button>
+                  {showUserOptions && (
+                    <div className="user-options rounded-more d-flex flex-column align-items-center justify-content-center bg-dark">
+                      <div
+                        className="btn bg-black text-light w-100 rounded-more "
+                        onClick={() => {
+                          props.logoutFunction();
+                          setShowUserOptions(false);
+                        }}
+                      >
+                        Đăng xuất
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Nav.Link>
+                  <Link to="/login">
+                    <button className="rounded-pill ms-3 ">Đăng nhập</button>
+                  </Link>
+                </Nav.Link>
+              )}
             </Navbar.Collapse>
           </Container>
         </Navbar>
@@ -209,6 +244,7 @@ export default function MyNavbar(props) {
                         className="rounded-pill"
                         onClick={() => {
                           setExpanded(false);
+                          setShowNav(false);
                           props.goToTag(item);
                         }}
                       >

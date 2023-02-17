@@ -1,0 +1,24 @@
+@use "./mixin" as *;
+
+
+.login-signup{
+    min-height:80vh;
+    width: 350px;
+    margin: 6rem auto 3rem auto;
+    
+    
+    @include mobile-view{
+        width: 90%;
+
+    }
+    p{
+        color:red;
+    }
+    u{
+        cursor: pointer;
+    }
+
+    form{
+        margin: 2rem auto;
+    }
+}

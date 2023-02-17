@@ -1,14 +1,25 @@
 import Main from "./components/main";
 import { BrowserRouter } from "react-router-dom";
-import { useRef, useEffect, useState } from "react";
-
+import { useEffect } from "react";
+import Animation from "./components/animation";
+import apiURL from "./components/api";
 function App() {
+  useEffect(() => {
+    async function updateVisits() {
+      await fetch(apiURL.updateVisits, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      console.log("fetched Visits");
+    }
 
- 
-  useEffect(() => {}, []);
+    updateVisits();
+  }, []);
+
   return (
     <BrowserRouter>
-      <Main/>
+      <Main />
     </BrowserRouter>
   );
 }

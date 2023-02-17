@@ -15,7 +15,12 @@
   position: relative;
   img {
     @include desktop-view {
-      width: 100%;
+      width: 110%;
+      height:auto;
+    }
+    @include mobile-view {
+      width: auto;
+      height:110%;
     }
     position: absolute;
     top: 50%;

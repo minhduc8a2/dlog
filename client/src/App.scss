@@ -10,6 +10,8 @@
 @use "./scss/minhducinfo";
 @use "./scss/footer";
 @use "./scss/posts";
+@use "./scss/loginAndSignup";
+
 
 * {
   list-style: none;
@@ -22,6 +24,8 @@ a {
 }
 .App {
   text-align: center;
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 .slide-enter {
@@ -41,5 +45,3 @@ a {
   opacity: 0;
   transition: opacity 0.8s ease-in;
 }
-
-

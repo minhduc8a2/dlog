@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 5000;
 //router
 const postRouter = require("./routes/post");
 const userRouter = require("./routes/user");
+const reportRouter = require("./routes/report");
+const commentRouter = require("./routes/comment");
 
 //middleware
 const errorsHandlerMiddleware = require("./middlewares/errorsHandler");
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
 //routers
 app.use("/api/post", postRouter);
 app.use("/api/user", userRouter);
+app.use("/api/report", reportRouter);
+app.use("/api/comment", commentRouter);
 
 //using middleware
 app.use(errorsHandlerMiddleware);

@@ -7,6 +7,11 @@ const UserSchema = mongoose.Schema({
     maxLength: 50,
     minLength: 1,
   },
+  avatar: {
+    type: String,
+    default: "",
+    maxLength: 1000,
+  },
   email: {
     type: String,
     required: [true, "Please provide email"],

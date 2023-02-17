@@ -1,64 +1,29 @@
 import minhducPic from "../images/profilepic.jpg";
 import { motion } from "framer-motion"
-import Typed from "react-typed";
+import Animation from "./animation";
 export default function MinhDucInfo() {
-  const cardVariants= {
-    offscreen: {
-     opacity: 0, x: "-100%" 
-     
-    },
-    onscreen: {
-      opacity: 1,x:0 
-      
-    }
-  };
-  const cardVariants2= {
-    offscreen: {
-     opacity: 0, x: "200px" 
-     
-    },
-    onscreen: {
-      opacity: 1,x:0 
-      
-    }
-  };
+  
   return (
     <div className="minhduc-info " >
       <div className="container ">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <img
-              src={minhducPic}
-              alt="Minh Duc"
-              className="rounded-circle mb-2"
-            />
+          <img
+            src={minhducPic}
+            alt="Minh Duc"
+            className="rounded-circle mb-2"/>
+          
+            
           </div>
           <div  className="col-12 col-lg-6 minhduc-info-body  ">
             <section className=" d-flex justify-content-center flex-column align-items-center">
-              <motion.h4
-              initial="offscreen"
-              transition={{
-                default: {
-                  duration: 1,
-                  ease: [0, 0.71, 0.2, 1.01]
-                },
-                // scale: {
-                //   type: "spring",
-                //   damping: 5,
-                //   stiffness: 100,
-                //   restDelta: 0.001
-                // }
-              }}
-              whileInView="onscreen"
-              viewport={{ once: false, amount: 0.8 }} variants={cardVariants}>CREATOR</motion.h4>
+              <h4>CREATOR</h4>
               <div className="mt-2 mb-2">
-                <Typed
+                <Animation children={<h2
                   className="minhduc-info-title"
-                  strings={["LÊ MINH ĐỨC", "FULLSTACK WEB DEVELOPER"]}
-                  typeSpeed={150}
-                  backSpeed={100}
-                  loop
-                />
+                  
+                 
+                >LÊ MINH ĐỨC</h2>} animationName="appearFromLeft"/>
               </div>
             </section>
             <section className=" text-start mx-3" >
@@ -81,27 +46,12 @@ export default function MinhDucInfo() {
                 do anh ấy phát triển.
               </p>{" "}
               <strong>
-                <motion.div
-                initial="offscreen"
-                transition={{
-                  default: {
-                    duration: 1,
-                    ease: [0, 0.71, 0.2, 1.01]
-                  },
-                  // scale: {
-                  //   type: "spring",
-                  //   damping: 5,
-                  //   stiffness: 100,
-                  //   restDelta: 0.001
-                  // }
-                }}
-                whileInView="onscreen"
-                viewport={{ once: false, amount: 0.8 }} variants={cardVariants2}>
-                  <q><i>
+                
+              <Animation children={<q><i>
                   Cung cấp những Websites chất lượng cho khách hàng là sứ mệnh
                   của chúng tôi.
-                </i></q>
-                </motion.div>
+                </i></q>} animationName="appearFromRight"/>
+                
               </strong>
             </section>
           </div>
