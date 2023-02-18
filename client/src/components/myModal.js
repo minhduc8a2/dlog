@@ -6,6 +6,7 @@ export default function MyModal({
   fn,
   customMessage,
   customButtonName,
+  customButtonStyle,
   customHeader,
   customResult,
   customSuccessResult,
@@ -46,9 +47,9 @@ export default function MyModal({
 
   return (
     <>
-      <Button variant="danger" onClick={handleShow}>
+      <button className={customButtonStyle || "btn btn-danger"} onClick={handleShow}>
         {customButtonName}
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -66,7 +67,7 @@ export default function MyModal({
       </Modal>
       <Modal show={secondShow} onHide={handleSecondClose}>
         <Modal.Body>
-          {result == true ? customSuccessResult : customFailureResult}
+          {result === true ? customSuccessResult : customFailureResult}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleSecondClose}>

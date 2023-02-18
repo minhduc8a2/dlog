@@ -29,7 +29,6 @@ function Main() {
   async function login(isLogin, name, email, password) {
     let res;
     if (isLogin) {
-      console.log(isLogin, email, password, apiURI.loginURL);
       const sentData = { email, password };
       res = await fetch(apiURI.loginURL, {
         method: "POST",
@@ -46,7 +45,7 @@ function Main() {
       });
     }
     const result = await res.json();
-    setUser({ ...result.data });
+    if (result.msg) setUser({ ...result.data });
 
     setLogined(result.msg);
 
@@ -64,14 +63,15 @@ function Main() {
         body: JSON.stringify({ frontEndToken: token }),
       });
       const result = await res.json();
-      setUser({ ...result.data });
       const status = result.msg;
+      if (status) setUser({ ...result.data });
+
       setLogined(status);
-      console.log(user, result.data);
     }
 
     checkLogin();
   }, []);
+
   return (
     <div className="App">
       <MyNavbar
@@ -82,6 +82,7 @@ function Main() {
         logoutFunction={() => {
           setLogined(false);
           localStorage.removeItem(tokenName);
+          setUser({});
         }}
         user={user}
       />
@@ -115,6 +116,7 @@ function Main() {
                   tag={item.tag}
                   author={item.author}
                   id={item._id}
+                  user={user}
                   samePosts={data.filter(
                     (post) => post.tag === item.tag && post._id !== item._id
                   )}

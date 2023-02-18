@@ -56,7 +56,7 @@ const updateComment = async (req, res) => {
 };
 const deleteComment = async (req, res) => {
   //find the post with id
-  const { id } = req.body;
+  const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     throw new CustomErrors("Id is not a valid");
   }

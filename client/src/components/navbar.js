@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { debounce } from "./helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faClose, faUser } from "@fortawesome/free-solid-svg-icons";
+import userIcon from "../images/user.png";
 
 export default function MyNavbar(props) {
   let tags = [];
@@ -170,10 +171,14 @@ export default function MyNavbar(props) {
                     }}
                   >
                     {props.user && (
-                      <img src={props.user.avatar} alt="" className="rounded-circle user-avatar-img"/>
-                    ) }
+                      <img
+                        src={props.user.avatar}
+                        alt=""
+                        className="rounded-circle user-avatar-img"
+                      />
+                    )}
                   </button>
-                  {showUserOptions && (
+                  {showUserOptions && showNav && (
                     <div className="user-options rounded-more d-flex flex-column align-items-center justify-content-center bg-dark">
                       <div
                         className="btn bg-black text-light w-100 rounded-more "
@@ -216,11 +221,48 @@ export default function MyNavbar(props) {
               <h4>{`D L O G`}</h4>
             </Link>
             <Navbar.Brand>
-              <Image
-                src={profilePic}
-                className="profile-pic"
-                roundedCircle="true"
-              />
+              <div className="user">
+                <button
+                  className="user-avatar ms-4 text-danger bg-black rounded-circle border-0 p-0"
+                  onClick={() => {
+                    setShowUserOptions(!showUserOptions);
+                  }}
+                >
+                  <img
+                    src={props.user.avatar || userIcon}
+                    alt=""
+                    className="rounded-circle user-avatar-img"
+                  />
+                </button>
+                {showUserOptions && showNav && (
+                  <div
+                    className="user-options rounded-more d-flex flex-column align-items-center justify-content-center bg-dark"
+                    style={{ right: "0", top: "calc(100% + 8px)" }}
+                  >
+                    {props.logined ? (
+                      <div
+                        className="btn bg-black text-light w-100 rounded-more "
+                        onClick={() => {
+                          props.logoutFunction();
+                          setShowUserOptions(false);
+                        }}
+                      >
+                        Đăng xuất
+                      </div>
+                    ) : (
+                      <Link
+                        to="/login"
+                        className="btn btn-dark rounded-more"
+                        onClick={() => {
+                          setShowUserOptions(false);
+                        }}
+                      >
+                        Đăng nhập
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto" navbarScroll>

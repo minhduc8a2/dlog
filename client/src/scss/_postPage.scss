@@ -29,7 +29,7 @@
   }
 
   h1,
-  &>p,
+  .container > p,
   .fontawesome {
     position: relative;
   }
@@ -40,8 +40,7 @@
     text-align: center;
   }
 
-  &>p {
-    
+  .container > p {
     padding-left: 6rem;
     padding-right: 6rem;
     text-align: justify;
@@ -53,7 +52,7 @@
   @include mobile-view {
     padding: 1rem;
     .container > img,
-    &>p {
+    .container > p {
       padding-left: 0rem;
       padding-right: 0rem;
       font-size: 1.2rem;
@@ -63,7 +62,7 @@
   @include tablet-view {
     padding: 4rem;
 
-    &>p {
+    .container > p {
       padding-left: 4rem;
       padding-right: 4rem;
     }
@@ -85,13 +84,31 @@
 
 .comment {
   .comment-btn {
-    margin-top:1rem;    
-    
+    margin-top: 1rem;
   }
-  .comment-icon{
+  .comment-icon {
     max-width: 2.5rem;
-    img{
+    img {
       max-width: 100%;
+    }
+  }
+  .comment-line {
+    &-body {
+      padding: 1rem 2rem;
+    }
+
+    &-more {
+      position: relative;
+      width: 1.5rem;
+      height: 1.5rem;
+      cursor: pointer;
+      .more-options {
+        
+        position: absolute;
+        top: calc(100% + 1rem);
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 }
