@@ -1,30 +1,30 @@
-import Form from "react-bootstrap/Form";
-import MyModal from "./myModal";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form"
+import MyModal from "./myModal"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import apiURI from "./api"
 export default function CreatePost() {
-  const apiUrl = apiURI.post;
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("");
-  const [tag, setTag] = useState("");
+  const apiUrl = apiURI.post
+  const [title, setTitle] = useState("")
+  const [image, setImage] = useState("")
+  const [content, setContent] = useState("")
+  const [author, setAuthor] = useState("")
+  const [tag, setTag] = useState("")
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   async function createPost() {
-    console.log({ title, content, image });
+    console.log({ title, content, image })
     const res = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=UTF-8" },
       body: JSON.stringify({ title, content, image, author, tag }),
-    });
-    const { msg } = await res.json();
-    console.log("msg", msg);
-    return msg;
+    })
+    const { msg } = await res.json()
+    console.log("msg", msg)
+    return msg
   }
   function updatePage() {
-    navigate("/admin/main");
+    navigate("/admin/main")
   }
 
   return (
@@ -77,17 +77,17 @@ export default function CreatePost() {
               onChange={(e) => setContent(e.target.value)}
             />
           </Form.Group>
-          <MyModal
-            fn={() => createPost()}
-            customButtonName="Create the post"
-            customMessage="Make sure that you do want to create the post?"
-            customHeader="Confirm"
-            customSuccessResult="The post has been created successfully"
-            customFailureResult="Failed to create the post"
-            updatePrePageFn={updatePage}
-          />
         </Form>
+        <MyModal
+          fn={() => createPost()}
+          customButtonName="Create the post"
+          customMessage="Make sure that you do want to create the post?"
+          customHeader="Confirm"
+          customSuccessResult="The post has been created successfully"
+          customFailureResult="Failed to create the post"
+          updatePrePageFn={updatePage}
+        />
       </div>
     </div>
-  );
+  )
 }

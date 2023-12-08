@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import React, { useState } from "react"
+import Button from "react-bootstrap/Button"
+import Modal from "react-bootstrap/Modal"
 
 export default function MyModal({
   fn,
@@ -13,41 +13,44 @@ export default function MyModal({
   customFailureResult,
   updatePrePageFn,
 }) {
-  const [show, setShow] = useState(false);
-  const [secondShow, setSecondShow] = useState(false);
-  const [result, setResult] = useState(false);
+  const [show, setShow] = useState(false)
+  const [secondShow, setSecondShow] = useState(false)
+  const [result, setResult] = useState(false)
 
   const handleAgree = async () => {
     if (fn) {
-      const AsyncFunction = fn.constructor;
+      const AsyncFunction = fn.constructor
 
-      let res;
+      let res
 
-      if (fn instanceof AsyncFunction === true) res = await fn();
-      else res = fn();
-
-      setResult(res);
-      handleSecondShow();
+      if (fn instanceof AsyncFunction === true) res = await fn()
+      else res = fn()
+      setResult(res)
+      console.log(res)
+      handleSecondShow()
     }
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const handleSecondClose = () => {
-    setSecondShow(false);
-    if (result) updatePrePageFn();
-  };
+    setSecondShow(false)
+    if (result) updatePrePageFn()
+  }
   const handleClose = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
   const handleSecondShow = () => {
-    setSecondShow(true);
-  };
+    setSecondShow(true)
+  }
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true)
 
   return (
     <>
-      <button className={customButtonStyle || "btn btn-danger"} onClick={handleShow}>
+      <button
+        className={customButtonStyle || "btn btn-danger"}
+        onClick={handleShow}
+      >
         {customButtonName}
       </button>
 
@@ -76,5 +79,5 @@ export default function MyModal({
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
